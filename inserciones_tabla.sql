@@ -1,0 +1,21 @@
+call insert_fabricantes ("Asus");
+call insert_fabricantes ("Lenovo");
+call insert_fabricantes ("Hewlett-Packard");
+call insert_fabricantes ("Samsung");
+call insert_fabricantes ("Seagate");
+call insert_fabricantes ("Crucial");
+call insert_fabricantes ("Gigabyte");
+call insert_fabricantes ("Huawei");
+call insert_fabricantes ("Xiaomi");
+
+call insert_producto ("Disco duro SATA3 1TB",86.99,5);
+call insert_producto("Memoria RAM DDR4 8GB",120 ,6);
+call insert_producto("Disco SSD 1 TB",150.99,4);
+call insert_producto("GeForce GTX 1050Ti ",185 ,7);
+call insert_producto("GeForce GTX 1080 Xtreme ",755  ,6);
+call insert_producto("Monitor 24 LED Full HD",202 ,1);
+call insert_producto("Monitor 27 LED Full HD ",245.99 ,1);
+call insert_producto("Portátil Yoga 520",559  ,2);
+call insert_producto("Portátil Ideapd 320 ",444,2);
+call insert_producto("Impresora HP Deskjet 3720",59.99,3);
+call insert_producto("Impresora HP Laserjet Pro M26nw",180,3);
