@@ -1,13 +1,13 @@
 USE `entregabs`;
-DROP procedure IF EXISTS `insert_fabricantes`;
+DROP procedure IF EXISTS `insert_fabricante`;
 
 DELIMITER $$
 USE `entregabs`$$
-CREATE PROCEDURE `insert_fabricantes` (
+CREATE PROCEDURE `insert_fabricante` (
 in nom varchar (100)
 )
 BEGIN
-insert into fabricantes(nombre) values (nom);
+insert into fabricante(nombre) values (nom);
 END$$
 
 DELIMITER ;
@@ -23,8 +23,7 @@ in pre double,
 in codfab int
 )
 BEGIN
-insert into productos(nombre,precio,codigo_fabricante) values (nom,pre,codfab);
+insert into producto(nombre,precio,codigo_fabricante) values (nom,pre,codfab);
 END$$
 
 DELIMITER ;
-
