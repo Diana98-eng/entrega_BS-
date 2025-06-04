@@ -1,12 +1,12 @@
-call insert_fabricantes ("Asus");
-call insert_fabricantes ("Lenovo");
-call insert_fabricantes ("Hewlett-Packard");
-call insert_fabricantes ("Samsung");
-call insert_fabricantes ("Seagate");
-call insert_fabricantes ("Crucial");
-call insert_fabricantes ("Gigabyte");
-call insert_fabricantes ("Huawei");
-call insert_fabricantes ("Xiaomi");
+call insert_fabricante ("Asus");
+call insert_fabricante ("Lenovo");
+call insert_fabricante ("Hewlett-Packard");
+call insert_fabricante ("Samsung");
+call insert_fabricante ("Seagate");
+call insert_fabricante ("Crucial");
+call insert_fabricante ("Gigabyte");
+call insert_fabricante ("Huawei");
+call insert_fabricante("Xiaomi");
 
 call insert_producto ("Disco duro SATA3 1TB",86.99,5);
 call insert_producto("Memoria RAM DDR4 8GB",120 ,6);

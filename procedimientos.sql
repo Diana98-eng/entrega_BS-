@@ -12,10 +12,13 @@ END$$
 
 DELIMITER ;
 
+
 USE `entregabs`;
 DROP procedure IF EXISTS `insert_producto`;
 
 DELIMITER $$
+
+
 USE `entregabs`$$
 CREATE PROCEDURE `insert_producto` (
 in nom varchar(100),
