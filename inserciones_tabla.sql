@@ -6,7 +6,7 @@ call insert_fabricante ("Seagate");
 call insert_fabricante ("Crucial");
 call insert_fabricante ("Gigabyte");
 call insert_fabricante ("Huawei");
-call insert_fabricante("Xiaomi");
+call insert_fabricante ("Xiaomi");
 
 call insert_producto ("Disco duro SATA3 1TB",86.99,5);
 call insert_producto("Memoria RAM DDR4 8GB",120 ,6);
@@ -19,5 +19,3 @@ call insert_producto("Portátil Yoga 520",559  ,2);
 call insert_producto("Portátil Ideapd 320 ",444,2);
 call insert_producto("Impresora HP Deskjet 3720",59.99,3);
 call insert_producto("Impresora HP Laserjet Pro M26nw",180,3);
-
-#comentario

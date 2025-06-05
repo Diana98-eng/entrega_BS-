@@ -3,7 +3,7 @@ use  entregaBS;
 
 create table fabricante(
 codigo int  primary key auto_increment,
-nombre varchar (100)
+nombre varchar (100) 
 );
 create table producto(
 codigo  int primary key auto_increment,

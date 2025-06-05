@@ -120,3 +120,45 @@ where p.precio > 180 order by p.precio desc, p.nombre asc;
 # ejer 13 
 select f.codigo,  f.nombre from fabricante as f
 inner join producto as p on p.codigo_fabricante = f.codigo group by f.codigo;
+/*ejercicio composicion externa*/
+# ejer 01 
+select f.nombre, p.nombre  from fabricante as f 
+left join producto as p on p.codigo_fabricante = f.codigo order by f.nombre;
+# ejer 02 
+select f.codigo, f.nombre from fabricante as f 
+left join producto as p on p.codigo_fabricante = f.codigo 
+where f.codigo is null order by f.nombre;
+/*ejercicio consulta resumen*/
+# ejer 01 
+select count(*)  as total_producto from producto;
+# ejer 02 
+select count(*)  as total_fabricante from fabricante;
+# ejer 03 
+select  count(distinct p.codigo_fabricante)from producto as p;
+#ejer 04 
+select avg (precio)  as media_precio from producto;
+# ejer 05 
+select * from producto where precio =(select min(precio) from producto);
+# ejer 06 
+select * from producto where precio =(select max(precio) from producto);
+# ejer 07 
+select nombre, min(precio) from producto;
+# ejer 08
+select nombre, max(precio) from producto;
+# ejer 09 
+select sum(precio) from producto;
+# ejer 10 
+select  nombre, count(codigo_fabricante) from producto
+ where codigo_Fabricante =1 ;
+# Ejer 11 
+select avg(precio) from producto where codigo_fabricante = 1;
+# ejer 12 
+select min(precio) from producto where codigo_fabricante = 1;
+# ejer 13 
+select max(precio) from producto where codigo_fabricante = 1;
+# ejer 14 
+select sum(precio) from producto where codigo_fabricante = 1;
+# ejer 15 
+select max(precio) as maximo, min(precio) as minimo, avg(precio) as media, count(*) as total
+from producto where codigo_fabricante = 6;
+# Ejer 16 
