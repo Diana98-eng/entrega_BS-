@@ -162,3 +162,103 @@ select sum(precio) from producto where codigo_fabricante = 1;
 select max(precio) as maximo, min(precio) as minimo, avg(precio) as media, count(*) as total
 from producto where codigo_fabricante = 6;
 # Ejer 16 
+select f.nombre, count(p.codigo) as total_producto from fabricante as f 
+left join producto as p on p.codigo_fabricante = f.codigo
+group by f.nombre,  p.codigo order by total_producto;
+# ejer 17 
+select f.nombre, max(p.precio) as precio_maximo, min(p.precio) as precio_minimo, avg(p.precio) as media_precio
+from fabricante as f 
+join producto as p on p.codigo_fabricante = f.codigo
+group by f.codigo, f.nombre;
+# ejer 18 
+select  p.codigo_fabricante, max(p.precio) as precio_maximo,
+ min(p.precio) as precio_minimo, 
+ avg(p.precio) as media_precio, count(*) from producto as p group by p.codigo_fabricante having avg(p.precio) >200;
+  # ejer 19 
+select f.nombre, p.codigo_fabricante, max(p.precio) as precio_maximo,
+ min(p.precio) as precio_minimo, 
+ avg(p.precio) as media_precio, count(*) from producto as p  join fabricante as f on p.codigo_fabricante = f.codigo
+ group by p.codigo_fabricante having avg(p.precio) >200;
+# ejer 20
+SELECT count(*) AS precio_fabricante_mayor_a_180
+    FROM producto WHERE precio >180;
+# ejer 21 
+select count(p.codigo_fabricante), f.nombre from  producto  as  p
+left join fabricante as f on p.codigo_fabricante = f.codigo 
+where p.precio > 180 group by p.codigo_fabricante, f.nombre ; 
+# ejer 22 
+select avg(p.codigo_fabricante), f.codigo from  producto  as  p
+left join fabricante as f on p.codigo_fabricante = f.codigo 
+group by p.codigo_fabricante ;
+# ejer 23 
+select avg(p.codigo_fabricante), f.nombre from  producto  as  p
+left join fabricante as f on p.codigo_fabricante = f.codigo 
+group by p.codigo_fabricante ;
+# ejer 24
+select f.nombre, p.codigo_fabricante, avg(p.precio) as media_precio from producto as p  join fabricante as f on p.codigo_fabricante = f.codigo
+ group by p.codigo_fabricante having avg(p.precio) >150;
+ # ejer 25 
+ select f.nombre, p.codigo_fabricante  from producto as p  join fabricante as f on p.codigo_fabricante = f.codigo
+ group by p.codigo_fabricante,f.nombre having count(p.codigo)>=2;
+ # ejer 26
+ select f.nombre, count(p.codigo) from fabricante as f  join producto as p on p.codigo_fabricante = f.codigo
+ where p.precio >= 200 group by f.nombre ;
+ # ejer 27 
+ select  f.nombre ,COUNT(p.codigo) from fabricante as f
+left join producto  as p  on f.codigo = p.codigo_fabricante and  p.precio >= 220
+group by f.codigo, f.nombre;
+# ejer 28 
+select f.nombre, sum(p.precio / 1.15) as precio_dolares from fabricante as f 
+join producto as p on p.codigo_fabricante = f.codigo 
+group by f.codigo, f.nombre  having sum(p.precio/1.15)> 1000;
+# ejer 29  
+select p.nombre, p.precio,f.nombre from producto as p
+join fabricante  as f on p.codigo_fabricante = f.codigo
+where p.precio = (select max(p2.precio) from producto as  p2 where p2.codigo_fabricante = p.codigo_fabricante)
+ORDER BY f.nombre ASC;
+/* subconsultas*/
+# ejer 01 
+select   * from  producto where Codigo_fabricante = (select Codigo from fabricante where Nombre = 'Lenovo');
+# ejer 02
+select * from producto where precio = ( select max(precio) from producto where codigo_fabricante = 2);
+# ejer 03 
+select * from producto where precio = ( select max(precio) from producto where codigo_fabricante = 2);
+# ejer 04 
+select * from producto where precio = ( select max(precio) from producto where codigo_fabricante = 3);
+# ejer 05 
+select * from producto where codigo_fabricante = 2 and precio <>
+ (select max(precio) from producto where codigo_fabricante = 2 );
+ # ejer 06 
+ select * from producto where precio = ( select avg(precio) from producto where codigo_fabricante = 1);
+ # ejer 07
+ select * from producto where precio >= all (select precio from producto );
+ # ejer 08 
+  select * from producto where precio <= all (select precio from producto );
+  # ejer 09 
+  select nombre from fabricante  where codigo = any  (select codigo_fabricante from producto );
+# ejer 10 
+select nombre from fabricante where codigo <> all (select codigo_fabricante  from producto );
+# ejer 11
+select nombre from fabricante  where codigo in (select distinct codigo_fabricante from producto );
+# ejer 12
+select * from fabricante as f where not exists
+( select p.nombre from producto as p where p.codigo_fabricante = f.codigo);
+#  ejer 13 
+select  f.nombre from fabricante  as f where exists( select * from producto as p where p.codigo_fabricante = f.codigo);
+# ejer 14 
+select  f.nombre from fabricante  as f where not exists( select * from producto as p where p.codigo_fabricante = f.codigo);
+# ejer 15 
+select f.nombre, p.nombre,p.precio from fabricante as f 
+join producto as p on  p.codigo_fabricante = f.codigo
+where p.precio = (select MAX(p2.precio) from producto as  p2 where p2.codigo_fabricante = f.codigo);
+# ejer 16
+select p.Nombre, p.Precio, p.Codigo_fabricante from producto as p 
+where p.Precio >= (select avg(p2.Precio)from producto p2 where p2.Codigo_fabricante = p.Codigo_fabricante);
+# ejer 17 
+select p.Nombre from producto as p join fabricante as f on p.Codigo_fabricante = f.Codigo 
+where f.Nombre = 'Lenovo' order by p.Precio desc ;
+# ejer 18
+select f.Nombre from fabricante as f where (select COUNT(*)from producto as p 
+where p.Codigo_fabricante = f.Codigo) = (select  COUNT(*) from producto 
+where Codigo_fabricante = (select Codigo from fabricante where Nombre = 'Lenovo'));
+
